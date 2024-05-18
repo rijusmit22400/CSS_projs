@@ -1,10 +1,12 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 function Cart() {
     return (
         <div>
-        <h1>About</h1>
-        <p>Welcome to the About page!</p>
+        <Navbar></Navbar>
+        <h1>Cart</h1>
+        <p>Welcome to the Cart page!</p>
         </div>
     );
 }

@@ -1,10 +1,12 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 function Profile() {
     return (
         <div>
-        <h1>About</h1>
-        <p>Welcome to the About page!</p>
+        <Navbar></Navbar>
+        <h1>Profile</h1>
+        <p>Welcome to the Profile page!</p>
         </div>
     );
 }

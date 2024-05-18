@@ -1,9 +1,11 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 function Delivery() {
     return (
         <div>
-        <h1>About</h1>
+        <Navbar></Navbar>
+        <h1>Delivery</h1>
         <p>Welcome to the About page!</p>
         </div>
     );
