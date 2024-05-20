@@ -7,7 +7,7 @@ function Navbar() {
         <div>
             <nav>
                 <div className="name">
-                    KRSR Online Electronics Store
+                    <p>KRSR Online Electronics Store</p>
                 </div>   
                 <ul>
                     <li><Link to="/">Home</Link></li>

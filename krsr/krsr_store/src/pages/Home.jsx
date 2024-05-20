@@ -6,7 +6,6 @@ function Home() {
   return (
     <div>
       <Navbar></Navbar>
-      <Hero></Hero>
       <Footer></Footer>
     </div>
   );
