@@ -6,6 +6,7 @@ function Invoice() {
         <Navbar></Navbar>
         <h1>About</h1>
         <p>Welcome to the About page!</p>
+        <Footer></Footer>
         </div>
     );
 }

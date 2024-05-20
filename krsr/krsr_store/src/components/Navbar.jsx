@@ -1,17 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 function Navbar() {
-    return <div>
-        <nav>
-            <ul>
-                <span><li><a href="/">Home</a></li></span>
-                <span><li><a href="/about">About</a></li></span>
-                <span><li><a href="/profile"><i class="bi bi-person-circle"></i></a></li></span>
-                <span><li><a href="/cart"><i class="bi bi-cart"></i></a></li></span>
-            </ul>
-        </nav>
-    </div>
+    return (
+        <div>
+            <nav>
+                <div className="name">
+                    KRSR Online Electronics Store
+                </div>   
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/profile"><i className="bi bi-person-circle"></i></Link></li>
+                    <li><Link to="/cart"><i className="bi bi-cart"></i></Link></li>
+                </ul>
+            </nav>
+        </div>
+    );
 }
 
 

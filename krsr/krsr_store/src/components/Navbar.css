@@ -1,15 +1,11 @@
-
-*{
-    box-sizing: border-box;
-}
-
 nav{
+    color: #fff;
     width: 100%;
     display: flex;
     justify-content: flex-end;
     padding: 1rem 2rem;
-    background-color: #1d1d17;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #0b1a24;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 nav ul{
@@ -17,7 +13,7 @@ nav ul{
     display: flex;
     justify-content: flex-end;
     list-style: none;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 nav a{
@@ -29,4 +25,15 @@ nav a{
     text-decoration: none;
     display: flex;
     align-items: center;
+}
+
+
+.name{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    align-content: center;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 700;
 }

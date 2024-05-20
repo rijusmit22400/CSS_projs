@@ -7,6 +7,7 @@ function Cart() {
         <Navbar></Navbar>
         <h1>Cart</h1>
         <p>Welcome to the Cart page!</p>
+        <Footer></Footer>
         </div>
     );
 }

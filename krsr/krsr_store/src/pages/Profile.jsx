@@ -7,6 +7,7 @@ function Profile() {
         <Navbar></Navbar>
         <h1>Profile</h1>
         <p>Welcome to the Profile page!</p>
+        <Footer></Footer>
         </div>
     );
 }
