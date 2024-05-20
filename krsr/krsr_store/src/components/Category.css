@@ -1,0 +1,5 @@
+img{
+    width: max(35vw, 150px);
+    height: max(40vh, 100px);
+    object-fit: cover;
+}

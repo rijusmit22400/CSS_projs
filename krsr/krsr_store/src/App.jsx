@@ -4,16 +4,19 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
-import Robots from "./pages/Robots";
-import Laptops from "./pages/Laptops";
-import Mobiles from "./pages/Phones";
-import Microphones from "./pages/Microphones";
-import Cameras from "./pages/Cameras";
-import Headphones from "./pages/Headphones";
-import Speakers from "./pages/Speakers";
-import TV from "./pages/TV";
-import AC from "./pages/AC";
-import Accessories from "./pages/Accessories";
+import Robots from "./products/Robots";
+import Laptops from "./products/Laptops";
+import Mobiles from "./products/Phones";
+import Microphones from "./products/Microphones";
+import Cameras from "./products/Cameras";
+import Headphones from "./products/Headphones";
+import Speakers from "./products/Speakers";
+import TV from "./products/TV";
+import AC from "./products/AC";
+import Accessories from "./products/Accessories";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +35,8 @@ function App() {
         <Route path="/tv" element={<TV />} />
         <Route path="/ac" element={<AC />} />
         <Route path="/accessories" element={<Accessories />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Category.css";
 
-function Category(text, image, link) {
+function Category({ image, text, link }) {
     return (
         <div>
             <div className="category">
