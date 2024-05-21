@@ -7,10 +7,10 @@ function Navbar() {
         <div>
             <nav>
                 <div className="name">
-                    <p>KRSR Online Electronics Store</p>
+                    <p>Trinity Online Electronics Store</p>
                 </div>   
                 <ul>
-                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/home">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/profile"><i className="bi bi-person-circle"></i></Link></li>
                     <li><Link to="/cart"><i className="bi bi-cart"></i></Link></li>

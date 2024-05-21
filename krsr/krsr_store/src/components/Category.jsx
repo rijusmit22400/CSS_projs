@@ -7,8 +7,7 @@ function Category({ image, text, link }) {
         <div>
             <div className="category">
                 <img src={image} alt="category"></img>
-                <p>{text}</p>
-                <Link to={link}/>
+                <Link to={link}><p id="title">{text}</p></Link>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Hero.css";
+import "./Carasoul.css";
 
 
 function Hero() {

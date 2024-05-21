@@ -6,7 +6,7 @@ import mysql
 conn = engine.connect()
 session = sessionmaker(bind = conn)
 
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, Double
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -26,3 +26,39 @@ class Customer(Base):
     user_id = Column(Integer, unique=True)
     contact = Column(String(10))
     address = Column(String(255))
+    
+class Admin(Base):
+    __tablename__ = 'admin'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, unique=True)
+    store = Column(String(10))
+    contact = Column(String(255))
+    
+class Category(Base):
+    __tablename__ = 'admin'
+    id = Column(Integer, primary_key=True)
+    description = Column(Integer, unique=True)
+    
+class Product(Base):
+    __tablename__ = 'admin'
+    id = Column(Integer, primary_key=True)
+    category_id = Column(Integer, unique=True)
+    name = Column(String(255))
+    description = Column(String(255))
+    price = Column(Double)
+    stock = Column(Integer)
+    
+class Cart(Base):
+    __tablename__ = 'admin'
+    id = Column(Integer, primary_key=True)
+    customer_id = Column(Integer, unique=True)
+    product_id = Column(Integer)
+    quantity = Column(Integer)
+
+class Invoice(Base):
+    __tablename__ = 'admin'
+    id = Column(Integer, primary_key=True)
+    customer_id = Column(Integer, unique=True)
+    admin_id = Column(Integer)
+    revenue = Column(Double)
+    date = Column(String(255))

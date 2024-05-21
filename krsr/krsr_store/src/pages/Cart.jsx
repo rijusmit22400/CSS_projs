@@ -6,8 +6,9 @@ function Cart() {
     return (
         <div>
         <Navbar></Navbar>
-        <h1>Cart</h1>
-        <p>Welcome to the Cart page!</p>
+        <div className ="categories-heading">
+        <p>View your cart</p>
+        </div>
         <Footer></Footer>
         </div>
     );

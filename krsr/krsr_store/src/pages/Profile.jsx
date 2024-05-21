@@ -6,8 +6,9 @@ function Profile() {
     return (
         <div>
         <Navbar></Navbar>
-        <h1>Profile</h1>
-        <p>Welcome to the Profile page!</p>
+        <div className ="categories-heading">
+        <p>Update your profile</p>
+        </div>
         <Footer></Footer>
         </div>
     );

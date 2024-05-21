@@ -6,8 +6,9 @@ function About() {
     return (
         <div>
         <Navbar></Navbar>
-        <h1>About</h1>
-        <p>Welcome to the About page!</p>
+        <div className ="categories-heading">
+        <p>About Project and The Team</p>
+        </div>
         <Footer></Footer>
         </div>
     );

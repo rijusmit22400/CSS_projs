@@ -1,7 +1,6 @@
 from flask import Flask, request, redirect
 import db_connect as db
-from authentication import validate, add_user, add_customer
-from flask_cors import CORS
+from krsr.store_backend.api_methods import validate, add_user, add_customer
 
 
 ses = db.session()
@@ -10,7 +9,6 @@ USER = db.User
 CUSTOMER = db.Customer
 
 app = Flask(__name__)
-cors = CORS(app, origins="http://localhost:5173/", supports_credentials=True)
 
 @app.route('/login', methods=['POST'])
 def login():
