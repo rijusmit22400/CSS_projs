@@ -10,10 +10,10 @@ function Navbar() {
                     <p>Trinity Online Electronics Store</p>
                 </div>   
                 <ul>
-                    <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/profile"><i className="bi bi-person-circle"></i></Link></li>
-                    <li><Link to="/cart"><i className="bi bi-cart"></i></Link></li>
+                    <li><Link to="/home?username=username&password=password">Home</Link></li>
+                    <li><Link to="/about?username=username&password=password">About</Link></li>
+                    <li><Link to="/profile?username=username&password=password"><i className="bi bi-person-circle"></i></Link></li>
+                    <li><Link to="/cart?username=username&password=password"><i className="bi bi-cart"></i></Link></li>
                 </ul>
             </nav>
         </div>

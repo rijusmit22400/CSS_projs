@@ -21,22 +21,22 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/laptops" element={<Laptops />} />
-        <Route path="/mobiles" element={<Mobiles />} />
-        <Route path="/robots" element={<Robots />} />
-        <Route path="/microphones" element={<Microphones />} />
-        <Route path="/cameras" element={<Cameras />} />
-        <Route path="/headphones" element={<Headphones />} />
-        <Route path="/speakers" element={<Speakers />} />
-        <Route path="/tv" element={<TV />} />
-        <Route path="/ac" element={<AC />} />
-        <Route path="/accessories" element={<Accessories />} />
-        <Route path="/auth_login" element={<Login />} />
-        <Route path="/auth_register" element={<Register />} />
+        <Route path="/home" element={<Home username="username" password="password" />} />
+        <Route path="/about" element={<About username="username" password="password" />} />
+        <Route path="/profile" element={<Profile username="username" password="password" />} />
+        <Route path="/cart" element={<Cart username="username" password="password" />} />
+        <Route path="/laptops" element={<Laptops username="username" password="password" />} />
+        <Route path="/mobiles" element={<Mobiles username="username" password="password" />} />
+        <Route path="/robots" element={<Robots username="username" password="password" />} />
+        <Route path="/microphones" element={<Microphones username="username" password="password" />} />
+        <Route path="/cameras" element={<Cameras username="username" password="password" />} />
+        <Route path="/headphones" element={<Headphones username="username" password="password" />} />
+        <Route path="/speakers" element={<Speakers username="username" password="password" />} />
+        <Route path="/tv" element={<TV username="username" password="password" />} />
+        <Route path="/ac" element={<AC username="username" password="password" />} />
+        <Route path="/accessories" element={<Accessories username="username" password="password" />} />
+        <Route path="/auth_login" element={<Login username="username" password="password" />} />
+        <Route path="/auth_register" element={<Register username="username" password="password" />} />
       </Routes>
     </BrowserRouter>
   );
