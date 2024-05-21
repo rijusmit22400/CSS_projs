@@ -6,9 +6,6 @@ function AC() {
   return (
     <div>
       <Navbar/>
-      <div>
-        <Link to="/cart">Cart</Link>
-      </div>
       <Footer/>
     </div>
   );
