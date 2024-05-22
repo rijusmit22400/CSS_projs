@@ -1,14 +1,20 @@
 from flask import Flask, request, redirect
 import db_connect as db
-from krsr.store_backend.api_methods import validate, add_user, add_customer
+from api_methods import validate, add_user, add_customer
+import json as js
+from flask_cors import CORS
 
 
 ses = db.session()
 con = db.conn
 USER = db.User
 CUSTOMER = db.Customer
+PRODUCT = db.Product
+CATEGORY = db.Category
 
 app = Flask(__name__)
+
+CORS(app,origins="http://localhost:5173", allow_headers="Content-Type", supports_credentials=True)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -44,6 +50,15 @@ def register():
     ses.commit()
     print("comitted")
     return redirect("http://localhost:5173/auth_login")
+
+@app.route('/call/product/<id>', methods=['GET'])
+def product(id):
+    products = ses.query(PRODUCT).filter(PRODUCT.category_id == id).all()
+    print("Request Accpeted ,Product")
+    category = ses.query(CATEGORY).filter(CATEGORY.id == id).first()
+    print(category)
+    output = {category.description:[{"item":products[i].name, "description":products[i].description, "price":products[i].price, "stock":products[i].quantity} for i in range(len(products))]}
+    return output
 
 if __name__ == '__main__':
     users = ses.query(USER).all()

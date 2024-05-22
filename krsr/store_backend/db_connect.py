@@ -30,33 +30,33 @@ class Customer(Base):
 class Admin(Base):
     __tablename__ = 'admin'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, unique=True)
+    user_id = Column(Integer)
     store = Column(String(10))
     contact = Column(String(255))
     
 class Category(Base):
-    __tablename__ = 'admin'
+    __tablename__ = 'category'
     id = Column(Integer, primary_key=True)
     description = Column(Integer, unique=True)
     
 class Product(Base):
-    __tablename__ = 'admin'
+    __tablename__ = 'product'
     id = Column(Integer, primary_key=True)
     category_id = Column(Integer, unique=True)
     name = Column(String(255))
     description = Column(String(255))
     price = Column(Double)
-    stock = Column(Integer)
+    quantity = Column(Integer)
     
 class Cart(Base):
-    __tablename__ = 'admin'
+    __tablename__ = 'cart'
     id = Column(Integer, primary_key=True)
     customer_id = Column(Integer, unique=True)
     product_id = Column(Integer)
     quantity = Column(Integer)
 
 class Invoice(Base):
-    __tablename__ = 'admin'
+    __tablename__ = 'invoice'
     id = Column(Integer, primary_key=True)
     customer_id = Column(Integer, unique=True)
     admin_id = Column(Integer)
