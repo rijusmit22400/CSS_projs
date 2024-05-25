@@ -28,7 +28,7 @@ def login():
     print(status)
     if(status[0]==False):
         return redirect("http://localhost:5173/auth_register")
-    return redirect("http://localhost:5173/home")
+    return redirect("http://localhost:5173/home",username,password)
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -57,7 +57,7 @@ def product(id):
     print("Request Accpeted ,Product")
     category = ses.query(CATEGORY).filter(CATEGORY.id == id).first()
     print(category)
-    output = {category.description:[{"item":products[i].name, "description":products[i].description, "price":products[i].price, "stock":products[i].quantity} for i in range(len(products))]}
+    output = { "name": category.description, "items":[{"item":products[i].name, "description":products[i].description, "price":products[i].price, "stock":products[i].quantity} for i in range(len(products))]}
     return output
 
 if __name__ == '__main__':

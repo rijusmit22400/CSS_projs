@@ -1,3 +1,12 @@
+#mlolga5axqcyfkllojizakk4k2kbwbrxkfbupy46nfdsoxhq5dwq
+#rijusmit.biswas
+
+#mysql server:iiitdmysql.mysql.database.azure.com
+#username: rijusmit
+#password: Mummy&papa
+
+
+
 def validate(username, password, users, password_hasher):
     """
     Validate the username and password.
