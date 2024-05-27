@@ -11,19 +11,24 @@ import { useParams } from "react-router-dom"
 import LandingPage from "./Landing";
 
 function App() {
-  let username = useParams();
-  let password = useParams();
+  let details = useParams();
+  if(details.username === null || details.username === undefined){
+    username = "guest";
+  }
+  if(details.key === null || details.key === undefined){
+    key = "no-key";
+  }
   console.log(username);
-  console.log(password);
+  console.log(key);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage/>} />
-        <Route path="/home" element={<Home username={username} password={password} />} />
-        <Route path="/about" element={<About username={username} password={password} />} />
-        <Route path="/profile" element={<Profile username={username} password={password} />} />
-        <Route path="/cart" element={<Cart username={username} password={password} />} />
-        <Route path="/product/:id" element={<Products username={username} password={password} />} />
+        <Route path="/home" element={<Home username={username} key={key} />} />
+        <Route path="/about" element={<About username={username} key={key} />} />
+        <Route path="/profile" element={<Profile username={username} key={key} />} />
+        <Route path="/cart" element={<Cart username={username} key={key} />} />
+        <Route path="/product/:id" element={<Products username={username} key={key} />} />
         <Route path="/auth_login" element={<Login/>} />
         <Route path="/auth_register" element={<Register/>} />
       </Routes>

@@ -5,10 +5,12 @@ function LandingPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate('/home');
+    navigate('/home?username=guest&password=no-password');
   }, [navigate]);
 
-  return null; // Or you can return some loading spinner or any UI if you want.
+  return <>
+  
+  </>; // Or you can return some loading spinner or any UI if you want.
 }
 
 export default LandingPage;
