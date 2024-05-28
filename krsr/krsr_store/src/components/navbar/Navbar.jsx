@@ -15,6 +15,8 @@ function Navbar() {
     if(key === null || key === undefined){
         key = "no-key";
     }
+    console.log(username);
+    console.log(key);
     return (
         <div>
             <nav>

@@ -9,12 +9,13 @@ import password_hashing as hasher
 
 
 def validate(username, password, users, password_hasher):
+    print([password_hasher[username], password])
     """
     Validate the username and password.
     """
-    if username in users and hasher.validate_password(password_hasher[username], password) == False:
+    if username in users and hasher.validate_password(password,password_hasher[username]) == True:
         return [True, "credentials_are_correct"]
-    elif username in users and hasher.validate_password(password_hasher[username], password) == False:
+    elif username in users and hasher.validate_password(password,password_hasher[username]) == False:
         return [False, "password_does_not_exist"]
     else:
         return [False, "username_does_not_exist"]

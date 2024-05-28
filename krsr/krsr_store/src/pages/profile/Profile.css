@@ -1,0 +1,44 @@
+#profile-box{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2vw;
+    align-items:self-start;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    margin-bottom: 4vw;
+    width: max-content;
+    box-shadow: 0px 0px 10px 0px #2a2a2a;
+    margin: 4vw auto;
+}
+
+label{
+    padding: 10px 0px;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000;
+}
+
+input{
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+button{
+    padding: 0.65vw;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+

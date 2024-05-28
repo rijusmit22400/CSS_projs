@@ -12,10 +12,15 @@ import LandingPage from "./Landing";
 
 function App() {
   let details = useParams();
-  if(details.username === null || details.username === undefined){
+  let username = details.username;
+  let key = details.key;
+  if(details === null || details === undefined){
+    details.username = "guest";
+  }
+  else if(details.username === null || details.username === undefined){
     username = "guest";
   }
-  if(details.key === null || details.key === undefined){
+  else if(details.key === null || details.key === undefined){
     key = "no-key";
   }
   console.log(username);

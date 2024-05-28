@@ -5,13 +5,14 @@ import Footer from "../../components/footer/Footer";
 
 import "./Home.css";
 import Category from "../../components/category/Category";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 function Home() {
-  const details = useParams();
-  let username = details.username;
-  let key = details.key;
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  let username = params.get('username');
+  let key = params.get('key');
 
   if(username === null || username === undefined){
     username = "guest";

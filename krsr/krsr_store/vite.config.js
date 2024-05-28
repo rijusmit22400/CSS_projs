@@ -18,6 +18,12 @@ export default defineConfig({
         secure: false,
         method: 'POST'
       },
+      '/change_profile': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false,
+        method: 'POST'
+      },
     }
   }
 })

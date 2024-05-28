@@ -28,7 +28,7 @@ def login():
     print(status)
     if(status[0]==False):
         return redirect("http://localhost:5173/auth_register")
-    return redirect(f"http://localhost:5173/home?username={username}&password={password}")
+    return redirect(f"http://localhost:5173/home?username={username}&key={str(password_hasher[username])}")
 
 @app.route('/register', methods=['POST'])
 def register():
