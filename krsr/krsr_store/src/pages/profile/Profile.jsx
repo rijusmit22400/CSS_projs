@@ -10,9 +10,9 @@ function Profile() {
     const location = useLocation();
     const details =  new URLSearchParams(location.search);
     let username = details.get('username');
-    let key = details.get('key');
+    const token = localStorage.getItem("token") ? localStorage.getItem("token") : null;
     useEffect(() => {
-        if (username === "guest") {
+        if (token === null) {
             navigate("/auth_login");
         }
     },[username, navigate]);

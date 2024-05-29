@@ -9,7 +9,6 @@ import password_hashing as hasher
 
 
 def validate(username, password, users, password_hasher):
-    print([password_hasher[username], password])
     """
     Validate the username and password.
     """

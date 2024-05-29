@@ -21,8 +21,3 @@ def refresh_token(token):
         return new_token
     except jwt.ExpiredSignatureError:
         return "Token expired. Please log in to get a new token."
-
-test = generate_token({"user_id": 1, "username": "admin"})
-print(generate_token({"user_id": 1, "username": "admin"}))
-print(validate_token(test))
-print(refresh_token(test))

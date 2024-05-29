@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Hero from "../../components/carasoul/Carasoul";
 import Footer from "../../components/footer/Footer";
@@ -6,24 +6,26 @@ import Footer from "../../components/footer/Footer";
 import "./Home.css";
 import Category from "../../components/category/Category";
 import { useLocation } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  let username = params.get('username');
-  let key = params.get('key');
-
-  if(username === null || username === undefined){
-    username = "guest";
-  }
-
-  if(key === null || key === undefined){
-    key = "no-key";
-  }
-
-  console.log(username);
-  console.log(key);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    let username = params.get('name');
+    let key = params.get('key');
+    useEffect(() => {
+      if(username === null || username != localStorage.getItem("user")){
+        username = "guest";
+    }
+    
+    if(key === null || key != localStorage.getItem("key")){
+      key = "no-key";
+    }
+    navigate(`/home?username=${username}&key=${key}`)
+    }, []);
+    console.log(username);
+    console.log(key);
   return (
     <div>
       <Navbar></Navbar>

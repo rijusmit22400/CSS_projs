@@ -8,13 +8,6 @@ function Navbar() {
     const params = new URLSearchParams(location.search);
     let username = params.get('username');
     let key = params.get('key');
-    if(username === null || username === undefined){
-        username = "guest";
-    }
-
-    if(key === null || key === undefined){
-        key = "no-key";
-    }
     console.log(username);
     console.log(key);
     return (

@@ -4,11 +4,22 @@ import Footer from "../../components/footer/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../../components/card/Card";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./Products.css";
 
 
 function Products() {
+  const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    let username = params.get('name');
+    let key = params.get('key');
+    if(username === null || username !== localStorage.getItem("user")){
+        username = "guest";
+    }
+    
+    if(key === null || key !== localStorage.getItem("password")){
+        key = "no-key";
+    }
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("");
