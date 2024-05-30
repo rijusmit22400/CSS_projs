@@ -1,16 +1,12 @@
-#profile-box{
+#profile-container{
     display: flex;
-    flex-direction: column;
     background-color: #fff;
     border-radius: 10px;
-    padding: 2vw;
+    padding: 5vw 6vw;
     align-items:self-start;
-    padding-left: 6vw;
-    padding-right: 6vw;
-    margin-bottom: 4vw;
-    width: max-content;
+    margin: 0 10vw 4vw 10vw;
     box-shadow: 0px 0px 10px 0px #2a2a2a;
-    margin: 4vw auto;
+    justify-content: space-between;
 }
 
 label{
@@ -42,3 +38,21 @@ button{
     cursor: pointer;
 }
 
+#profile-box{
+    padding-left: 3vh;
+    transform: translate(3vw,0 );
+}
+
+#profile-logo > img{
+    padding-right: 3vh;
+    width: 20vw;
+    height: 20vw;
+    transform: translate(-3vw,8vh);
+    filter: invert(1);
+}
+
+#dividing-line{
+    width: 2px;
+    height: 100dvh;
+    background-color: #7979798e;
+}

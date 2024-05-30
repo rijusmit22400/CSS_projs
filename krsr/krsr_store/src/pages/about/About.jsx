@@ -2,8 +2,7 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import "./About.css";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function About() {
@@ -12,16 +11,23 @@ function About() {
     const params = new URLSearchParams(location.search);
     let username = params.get('name');
     let key = params.get('key');
+    let stored_username = localStorage.getItem("user");
+    let stored_key = localStorage.getItem("key");
     useEffect(() => {
-    if(username === null || username != localStorage.getItem("user")){
+      if(username === null || username !== stored_username){
         username = "guest";
     }
     
-    if(key === null || key != localStorage.getItem("key")){
-        key = "no-key";
+    if(key === null || key !== stored_key){
+      key = "no-key";
+
     }
-    navigate(`/about?name=${username}&key=${key}`)
+    if (localStorage.getItem("token") === null) {
+        navigate("/about?username=guest&key=no-key");
+    }
     }, []);
+    console.log(username);
+    console.log(key);
     return (
         <div>
         <Navbar></Navbar>

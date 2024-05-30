@@ -5,6 +5,8 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useEffect } from "react";
 import "./Profile.css";
 
+import cart from "../../assets/cart.svg";
+
 function Profile() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,27 +20,49 @@ function Profile() {
     },[username, navigate]);
     return (
         <div>
-        <Navbar></Navbar>
-        <div className ="categories-heading">
-        <p>Update your profile</p>
-        <div id="profile-box">
-            <div id="form-profile">
-            <form method="POST" action="/change_profile">
-                <fieldset>
-                    <label>Full Name: <input type="text"/></label>
-                    <label>Username: <input type="text"/></label>
-                    <label>Password: <input type="password"/></label>
-                    <label>Confirm Password: <input type="password"/></label>
-                    <label>Contact: <input type="text"/></label>
-                    <label>Address: <input type="text"/></label>
-                    <label><button>Save</button></label>
-                    <label><button>Discard</button></label>
-                </fieldset>
-            </form>
+            <Navbar></Navbar>
+            <div className="categories-heading">
+                <p>Update your profile</p>
             </div>
-        </div>
-        </div>
-        <Footer></Footer>
+            <div id="profile-container">
+                <div id="profile-box">
+                    <form>
+                        <label htmlFor="full_name">
+                            Full Name:
+                            <input type="text" name="full_name" id="full_name" value="" />
+                        </label>
+                        <label htmlFor="username">
+                            Username:
+                            <input type="text" name="username" id="username" value="" />
+                        </label>
+                        <label htmlFor="password">
+                            Password:
+                            <input type="password" name="password" id="password" value="" />
+                        </label>
+                        <label htmlFor="email">
+                            Email:
+                            <input type="email" name="email" id="email" value="" />
+                        </label>
+                        <label htmlFor="contact">
+                            Contact:
+                            <input type="text" name="contact" id="contact" value="" />
+                        </label>
+                        <label htmlFor="address">
+                            Address:
+                            <input type="text" name="address" id="address" value="" />
+                        </label>
+                    </form>
+                    <label>
+                    <button>Save</button>
+                    </label>
+                    <label>
+                    <button>Discard</button>
+                    </label>
+                </div>
+                <div id="dividing-line"></div>
+                <div id="profile-logo"><img src={cart} alt="logo"/></div>
+            </div>
+            <Footer></Footer>
         </div>
     );
 }

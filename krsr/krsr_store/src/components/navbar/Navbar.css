@@ -44,3 +44,9 @@ nav a{
     margin-right: 3rem;
     padding-bottom: 3rem;
 }
+
+.logo-navbar > img{
+    width: 76.39px;
+    height: 76.39px;
+    object-fit: cover;
+}

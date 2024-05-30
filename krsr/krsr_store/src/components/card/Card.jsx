@@ -12,7 +12,7 @@ function Card({name, description, price, quantity}) {
             <p id="name">{name}</p>
             <p id="description">{description}</p>
             <p id="price">&#8377; {price}</p>
-            <div><button id="add-to-cart">Add to Cart</button></div>
+            <div><button id="add-to-cart">Add to Cart</button><input type="number"/></div>
             </div>
         </div>
         </>
