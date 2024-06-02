@@ -18,8 +18,6 @@ function Navbar() {
     if(key === null || key !== stored_key){
         key = "no-key";
     }
-    console.log(username);
-    console.log(key);
     return (
         <div>
             <nav>

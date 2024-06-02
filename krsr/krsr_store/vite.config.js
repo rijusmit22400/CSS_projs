@@ -24,6 +24,12 @@ export default defineConfig({
         secure: false,
         method: 'POST'
       },
+      '/call/cart':{
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false,
+        method: 'POST'
+      }
     }
   }
 })

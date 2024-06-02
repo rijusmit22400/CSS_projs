@@ -1,8 +1,8 @@
-from math import e
-import re
+from shlex import join
 from flask import Flask, request, redirect, session, Response
+from matplotlib import category
 import db_connect as db
-from api_methods import validate, add_user, add_customer
+from api_methods import validate, add_user, add_customer, adding_to_cart
 from flask_cors import CORS
 import jwt_tokens as tokens
 from flask import jsonify
@@ -17,6 +17,7 @@ USER = db.User
 CUSTOMER = db.Customer
 PRODUCT = db.Product
 CATEGORY = db.Category
+CART = db.Cart
 
 app = Flask(__name__)
 app.secret_key = secret
@@ -66,7 +67,8 @@ def register():
     usernames = [i.username for i in users]
     status_user = add_user(username, password, full_name, email, ses, usernames)
     if(status_user[0]):
-        add_customer(len(users)+1, contact, address, ses)
+        id_new = ses.query(USER).filter(USER.username == username).first()
+        add_customer(id_new, contact, address, ses)
     ses.commit()
     return redirect("http://localhost:5173/auth_login")
 
@@ -75,7 +77,7 @@ def product(id):
     products = ses.query(PRODUCT).filter(PRODUCT.category_id == id).all()
     print("Request Accpeted ,Product")
     category = ses.query(CATEGORY).filter(CATEGORY.id == id).first()
-    output = { "name": category.description, "items":[{"item":products[i].name, "description":products[i].description, "price":products[i].price, "stock":products[i].quantity} for i in range(len(products))]} # type: ignore
+    output = { "name": category.description, "items":[{"p_id": products[i].id,"item":products[i].name, "description":products[i].description, "price":products[i].price, "stock":products[i].quantity} for i in range(len(products))]} # type: ignore
     return output
 
 @app.route('/validate_token', methods=['POST'])
@@ -93,7 +95,59 @@ def validate_token():
         return "Invalid"
     finally:
         return "Invalid" 
+    
+@app.route('/call/cart', methods = ['POST'])
+def add_to_cart():
+    print("Adding ITem to cart")
+    item = request.get_json()
+    print(item)
+    item_id = ses.query(USER).filter(USER.username==item["user"]).first()
+    print(item_id.id)
+    status = adding_to_cart(item_id.id,item["p_id"],item["quantity"],ses)
+    print(status)
+    ses.commit()
+    return status
+
+@app.route('/show_cart/<username>',methods = ['GET'])
+def show_cart(username):
+    # Fetch the user_id for the given username
+    user = ses.query(USER).filter(USER.username == username).first()
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    user_id = user.id
+
+    # Join the CART and PRODUCT tables on the condition that PRODUCT.id matches CART.product_id
+    joint_table = (ses.query(CART, PRODUCT)
+                   .join(PRODUCT, CART.product_id == PRODUCT.id)
+                   .filter(CART.customer_id == user_id)
+                   .all())
+
+    # Extract the required information and prepare the output
+    output = [{"username": username, 
+               "name": product.name, 
+               "description": product.description, 
+               "price": product.price, 
+               "quantity": cart.quantity} for cart, product in joint_table]
+
+    # Return the output as JSON
+    return jsonify(output)
+
+@app.route('/show_details/<username>', methods=['GET'])
+def show_details(username):
+    print("Request Accpeted ,Showing Details")
+    user = ses.query(USER).filter(USER.username == username).first()
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    user_id = user.id
+    customer = ses.query(CUSTOMER).filter(CUSTOMER.user_id == user_id).first()
+    if not customer:
+        return jsonify({"error": "Customer not found"}), 404
+    output = {"username": username, "contact": customer.contact, "address": customer.address, "email": user.email, "Full Name": user.full_name}
+    return output
 
 if __name__ == '__main__':
-    users = ses.query(USER).all()
-    app.run(host='localhost', port=5000, debug=True)
+    try:
+        app.run(host='localhost', port=5000, debug=True)
+    except:
+        print("connection lost")

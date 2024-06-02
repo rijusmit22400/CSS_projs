@@ -40,7 +40,7 @@ function Products() {
         <p>{category}</p>
       </div>
       {products.map((product,index) => {
-        return <Card name={product.item} description={product.description} price={product.price} quantity={product.stock}></Card>
+        return <Card id={product.p_id} name={product.item} description={product.description} price={product.price} quantity={product.stock}></Card>
       })}<Footer/>
     </div>
   );

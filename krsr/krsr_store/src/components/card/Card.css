@@ -34,5 +34,15 @@
     padding: 0.7vw 1.5vw;
     background-color: #1f2d51;
     color: #fff;
+    font-size: 15px;
     border: none;
+    width: 8dvw;
+}
+
+input[type=number]{
+    width: 4dvw;
+    transform: translate(2dvw);
+    text-align: center;
+    color: #1f2d51c3;
+    font-weight: light;
 }

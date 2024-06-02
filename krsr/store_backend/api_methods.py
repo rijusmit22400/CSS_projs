@@ -6,7 +6,11 @@
 #password: Mummy&papa
 
 import password_hashing as hasher
+"""
 
+Every function here should return [Boolean, statement related to that boolean]    
+    
+"""
 
 def validate(username, password, users, password_hasher):
     """
@@ -19,7 +23,7 @@ def validate(username, password, users, password_hasher):
     else:
         return [False, "username_does_not_exist"]
     
-from db_connect import User, Customer    
+from db_connect import User, Customer, Cart   
     
 def add_user(username, password, full_name, email, db, users):
     """
@@ -38,3 +42,17 @@ def add_customer(user_id, contact, address, db):
     new_customer = Customer(id=user_id, contact=contact, address=address)
     db.add(new_customer)
     return [True, "customer_added"]
+
+def adding_to_cart(user_id,product_id,quantity,db):
+    """
+    Adding a new product to the cart
+    """
+    item_id = db.query(Cart).filter(Cart.product_id==int(product_id)).first()
+    if(item_id==None):    
+        new_item = Cart(product_id=int(product_id),customer_id=int(user_id),quantity=quantity)
+        db.add(new_item)
+        db.commit()
+    else:
+        db.query(Cart).filter(Cart.product_id==item_id.product_id).update({'quantity': int(item_id.quantity)+int(quantity)})
+        db.commit()
+    return [True, "item added"]
