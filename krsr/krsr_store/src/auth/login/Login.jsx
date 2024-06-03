@@ -1,14 +1,13 @@
 import React from "react";
 import "./Login.css";
 import { useState } from "react";
-
+import { Navigate } from "react-router-dom";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handle_login = (event) => {
     event.preventDefault();
-    alert("Logging in");
     const payload = {
       username: username,
       password: password
@@ -31,7 +30,7 @@ function Login() {
         localStorage.setItem("token", token)
         const store_user = localStorage.getItem("user");
         const store_key = localStorage.getItem("key");
-        window.location.href = `/home?name=${store_user}&key=${store_key}`
+        Navigate(`/home?name=${store_user}&key=${store_key}`);
         console.log("Logged in")
       }
     }).catch(error => {

@@ -89,7 +89,7 @@ def validate_token():
     key = details['key']
     payload = tokens.validate_token(token)
     try:
-        if(payload['username'] == name and payload['key'] == key):
+        if(payload['username'] == name and payload['key'] == key): #type: ignore
             return "Valid"
     except:
         return "Invalid"
@@ -102,8 +102,8 @@ def add_to_cart():
     item = request.get_json()
     print(item)
     item_id = ses.query(USER).filter(USER.username==item["user"]).first()
-    print(item_id.id)
-    status = adding_to_cart(item_id.id,item["p_id"],item["quantity"],ses)
+    print(item_id.id)#type: ignore
+    status = adding_to_cart(item_id.id,item["p_id"],item["quantity"],ses) #type: ignore
     print(status)
     ses.commit()
     return status
@@ -143,11 +143,8 @@ def show_details(username):
     customer = ses.query(CUSTOMER).filter(CUSTOMER.user_id == user_id).first()
     if not customer:
         return jsonify({"error": "Customer not found"}), 404
-    output = {"username": username, "contact": customer.contact, "address": customer.address, "email": user.email, "Full Name": user.full_name}
-    return output
+    output = {"username": username, "contact": customer.contact, "address": customer.address, "email": user.email, "full_name": user.full_name}
+    return jsonify(output)
 
 if __name__ == '__main__':
-    try:
-        app.run(host='localhost', port=5000, debug=True)
-    except:
-        print("connection lost")
+    app.run(host='localhost', port=5000, debug=True)

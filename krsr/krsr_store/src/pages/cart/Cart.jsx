@@ -3,10 +3,13 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./Cart.css";
+import "../../assets/cart.svg"
+
 
 function Cart() {
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
+    const [data, setData] = useState({});
     const token = localStorage.getItem("token") ? localStorage.getItem("token") : null;
 
     const navigate = useNavigate();
@@ -39,7 +42,7 @@ function Cart() {
         })
         .then(response => response.json())
         .then(data => {
-            setItems(data);
+            setData(data);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -51,6 +54,7 @@ function Cart() {
             navigate("/auth_login");
         } else {
             get_items();
+            get_details();
         }
     }, [token, username, navigate]);
 
@@ -66,6 +70,7 @@ function Cart() {
         }
         return total;
     }
+    console.log(data);
 
     return (
         <div>
@@ -81,15 +86,34 @@ function Cart() {
                                 <img src={"https://cdn11.bigcommerce.com/s-jjm7kgkrrc/images/stencil/1280x1280/products/82569/6197802/product_placeholder__65638.1673413880.jpg?c=1"} alt="item" />
                             </div>
                             <div className="item-details">
-                                <p>{item.name}</p>
-                                <p>Price: {item.price}</p>
-                                <p>Quantity: {item.quantity}</p>
+                                <p id="product-name">{item.name}</p>
+                                <p id="product-price">Price: &#8377;{item.price.toFixed(2)}</p>
+                                <p id="product-quantity">Quantity: {item.quantity}</p>
                             </div>
                         </div>
                     ))}
                 </div>
                 <div id="summary" className="box-in-cart-page">
-                    <p>Total: {total}</p>
+                    <p id="total">Total: &#8377;{total.toFixed(2)}</p>
+                    <div id="customer-details">
+                        <p><span>Name:</span> {data.full_name}</p>
+                        <p><span>Contact Number:</span> {data.contact}</p>
+                        <p><span>Email:</span> {data.email}</p>
+                        <p><span>Shipping to:</span> {data.address}</p>
+                    </div>
+                    <div>
+                        <label htmlFor="payment">Payment:</label>
+                        <select id="payment" name="payment">
+                            <option>Payment Method</option>
+                            <option>Cach on Delivery</option>
+                            <option>UPI</option>
+                            <option>Razorpay</option>
+                            <option>Credit/Debit Card</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button id="checkout">Checkout</button>
+                    </div>
                 </div>
             </div>
             <Footer />
