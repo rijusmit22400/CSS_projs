@@ -22,8 +22,8 @@ function Login() {
       if(Response.ok){
         const token = Response.headers.get("Authorization")
         Response.json().then(data => {
-          const store_username = data.payload.payload.username;
-          const store_key = data.payload.payload.key;
+          const store_username = data.username;
+          const store_key = data.key;
           localStorage.setItem("user", store_username);
           localStorage.setItem("key", store_key);
         });

@@ -67,10 +67,10 @@ function Hero() {
                 ))}
             </div>
             <button className="arrow arrow-left" onClick={prevSlide}>
-            <i class="bi bi-arrow-left-short"></i>
+            <i className="bi bi-arrow-left-short"></i>
             </button>
             <button className="arrow arrow-right" onClick={nextSlide}>
-            <i class="bi bi-arrow-right-short"></i>
+            <i className="bi bi-arrow-right-short"></i>
             </button>
         </div>
     );

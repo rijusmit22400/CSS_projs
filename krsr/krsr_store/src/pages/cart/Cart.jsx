@@ -55,6 +55,27 @@ function Cart() {
         } else {
             get_items();
             get_details();
+            const requestOptions = {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`
+                },
+                body: JSON.stringify({username: username, key: details.get('key')})
+            }
+            fetch('http://localhost:5000/validate_token', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if (data.entry === "valid") {
+                    console.log("Token is valid")
+                } else {
+                    navigate("/auth_login");
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                navigate("/auth_login");
+            });
         }
     }, [token, username, navigate]);
 
@@ -70,7 +91,33 @@ function Cart() {
         }
         return total;
     }
-    console.log(data);
+
+    const handle_checkout = () => {
+        console.log("Checkout initiated");
+        const payload = {
+            username: username,
+            key: details.get('key')
+        }
+        fetch('http://localhost:5000/checkout', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.entry === "success") {
+                console.log("Checkout successful");
+            } else {
+                console.log("Checkout failed");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 
     return (
         <div>
@@ -112,7 +159,7 @@ function Cart() {
                         </select>
                     </div>
                     <div>
-                        <button id="checkout">Checkout</button>
+                        <button type="button" onClick={handle_checkout} id="checkout">Checkout</button>
                     </div>
                 </div>
             </div>

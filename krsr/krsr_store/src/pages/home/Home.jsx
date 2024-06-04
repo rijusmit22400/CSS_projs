@@ -48,7 +48,7 @@ function Home() {
         <Category link={`/product/8?username=${name}&key=${key}`} image="https://os-wordpress-media.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2020/11/24212247/Air-Conditioner-Buying-Guide.jpg" text="AC"></Category>
         <Category link={`/product/8?username=${name}&key=${key}`} image="https://media.product.which.co.uk/prod/images/original/22a475e555d7-best-laptop-deals.jpg" text="Laptops"></Category>
         <Category link={`/product/5?username=${name}&key=${key}`} image="https://images.crutchfieldonline.com/ImageBank/v20210226083100/core/learn/article/4236/Wall-of-speakers-1200x800.jpg" text="Speakers"></Category>
-        <Category link={`/product/10?username=${name}&key=${key}`} image="https://media.bazaarvoice.com/Shutterstock_1875797686.png" text="Accessories"></Category>
+        <Category link={`/product/10?username=${name}&key=${key}`} image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzuElOjC-wxAiXEtkyfl5lMhqabWMZfYdF0g&s" text="Accessories"></Category>
         <Category link={`/product/7?username=${name}&key=${key}`} image="https://cdn.mos.cms.futurecdn.net/fsDKHB3ZyNJK6zMpDDBenB-1200-80.jpg" text="Headphones"></Category>
       </div>
       <Footer></Footer>
