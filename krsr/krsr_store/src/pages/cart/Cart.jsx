@@ -93,6 +93,11 @@ function Cart() {
     }
 
     const handle_checkout = () => {
+        if(total === 0) {
+            alert("Cart is empty");
+            navigate("/home?username=" + username + "&key=" + details.get('key'));
+            return;
+        }
         console.log("Checkout initiated");
         const payload = {
             username: username,
@@ -110,6 +115,7 @@ function Cart() {
         .then(data => {
             if (data.entry === "success") {
                 console.log("Checkout successful");
+                navigate("/delivery");
             } else {
                 console.log("Checkout failed");
             }
@@ -126,20 +132,22 @@ function Cart() {
                 <p>View your cart</p>
             </div>
             <div id="cart-container">
-                <div id="items" className="box-in-cart-page">
-                    {items.map((item, index) => (
-                        <div className="item" key={index}>
-                            <div className="item-image">
-                                <img src={"https://cdn11.bigcommerce.com/s-jjm7kgkrrc/images/stencil/1280x1280/products/82569/6197802/product_placeholder__65638.1673413880.jpg?c=1"} alt="item" />
+                {items.length === 0 ? <div id="empty-cart">Cart is empty</div> :<div id="items" className="box-in-cart-page">
+                    {items.map((item, index) => {
+                        return (
+                            <div className="item" key={index}>
+                                <div className="item-image">
+                                    <img src={"https://cdn11.bigcommerce.com/s-jjm7kgkrrc/images/stencil/1280x1280/products/82569/6197802/product_placeholder__65638.1673413880.jpg?c=1"} alt="item" />
+                                </div>
+                                <div className="item-details">
+                                    <p id="product-name">{item.name}</p>
+                                    <p id="product-price">Price: &#8377;{item.price.toFixed(2)}</p>
+                                    <p id="product-quantity">Quantity: {item.quantity}</p>
+                                </div>
                             </div>
-                            <div className="item-details">
-                                <p id="product-name">{item.name}</p>
-                                <p id="product-price">Price: &#8377;{item.price.toFixed(2)}</p>
-                                <p id="product-quantity">Quantity: {item.quantity}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                        );
+                    })}
+                </div>}
                 <div id="summary" className="box-in-cart-page">
                     <p id="total">Total: &#8377;{total.toFixed(2)}</p>
                     <div id="customer-details">

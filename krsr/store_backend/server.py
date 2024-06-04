@@ -133,6 +133,7 @@ def show_cart(username):
 
 @app.route('/show_details/<username>', methods=['GET'])
 def show_details(username):
+    ses.rollback()
     print("Request Accpeted ,Showing Details")
     user = ses.query(USER).filter(USER.username == username).first()
     if not user:
@@ -146,6 +147,7 @@ def show_details(username):
 
 @app.route('/change_details', methods=['PATCH'])
 def change_details():
+    ses.rollback()
     print("Request Accpeted ,Changing Details")
     details=request.get_json()
     user_name = details['username']
@@ -187,7 +189,7 @@ def checkout():
     payload = tokens.validate_token(token)
     username = request_data.get('username')
     password = request_data.get('key')
-    if username != payload["username"] or password != payload["key"]:
+    if username != payload["username"] or password != payload["key"]: #type: ignore
         return jsonify({'error': 'Invalid credentials'}), 403
     user = ses.query(USER).filter(USER.username == username).one()
     user_id = user.id
