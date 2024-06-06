@@ -38,7 +38,13 @@ function Card({id, name, description, price, stock}) {
             <p id="name">{name}</p>
             <p id="description">{description}</p>
             <p id="price">&#8377; {price}</p>
-            <div><button id="add-to-cart" onClick={add_to_cart}>Add to Cart</button><input value={quantity} onChange={(e)=>{setQuantity(e.target.value)}} name="quantity" id="quantity" max={stock} min="1" type="number"/></div>
+            <div id="data-field"><button id="add-to-cart" onClick={add_to_cart}>Add to Cart</button>
+            <div id="data-field-quantity">
+            <button className="items-counter" type="button">+</button>
+            <input value={quantity} onChange={(e)=>{setQuantity(e.target.value)}} name="quantity" id="quantity" max={stock} min="1" type="number"/>
+            <button className="items-counter" type="button">-</button>
+            </div>
+            </div>
             </div>
         </div>
         </>

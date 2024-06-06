@@ -32,7 +32,6 @@ function Products() {
   useEffect(() => {
     fetching();
   },[]);
-  console.log(products[0]);
   return (
     <div>
       <Navbar/>
@@ -40,7 +39,7 @@ function Products() {
         <p>{category}</p>
       </div>
       {products.map((product,index) => {
-        return <Card id={product.p_id} name={product.item} description={product.description} price={product.price} quantity={product.stock}></Card>
+        return <Card key={index} id={product.p_id} name={product.item} description={product.description} price={product.price} quantity={product.stock}></Card>
       })}<Footer/>
     </div>
   );

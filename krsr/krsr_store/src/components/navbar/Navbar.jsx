@@ -18,6 +18,15 @@ function Navbar() {
     if(key === null || key !== stored_key){
         key = "no-key";
     }
+
+    const logout = () => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("key");
+        localStorage.removeItem("token");
+        window.location.href = "/auth_login";
+    }
+
+
     return (
         <div>
             <nav>
@@ -31,6 +40,7 @@ function Navbar() {
                 <ul>
                     <li><Link to={`/home?username=${username}&key=${key}`}>Home</Link></li>
                     <li><Link to={`/about?username=${username}&key=${key}`}>About</Link></li>
+                    <li onClick={logout}><i className="bi bi-door-closed"></i></li>
                     <li><Link to={`/profile?username=${username}&key=${key}`}><i className="bi bi-person-circle"></i></Link></li>
                     <li><Link to={`/cart?username=${username}&key=${key}`}><i className="bi bi-cart"></i></Link></li>
                 </ul>

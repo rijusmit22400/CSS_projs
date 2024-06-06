@@ -24,3 +24,7 @@ button:active{
 img{
     object-fit: cover;
 }
+
+input{
+    height: max(4vh,2.5vw);
+}

@@ -27,6 +27,17 @@ nav a{
     align-items: center;
 }
 
+nav li{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
 
 .name{
     font-family: "Roboto", sans-serif;
