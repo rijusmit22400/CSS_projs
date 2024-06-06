@@ -142,3 +142,8 @@ label{
     margin-top: 10vh;
     padding: 0 auto;
 }
+
+#detail{
+    color: #0b1a24;
+    font-size: 1.2rem;
+}

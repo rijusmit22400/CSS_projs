@@ -1,5 +1,6 @@
 import re
 from flask import Flask, request, redirect, session, Response
+from h11 import Request
 import db_connect as db
 from api_methods import validate, add_user, add_customer, adding_to_cart
 from flask_cors import CORS
@@ -89,6 +90,7 @@ def validate_token():
     if(payload['username'] == name and payload['key'] == key): #type: ignore
         print("Valid Token")
         Response = jsonify({"entry": "valid"})
+        print(request.get_json())
     else:
         Response = jsonify({"entry": "invalid"})
     return Response

@@ -151,10 +151,10 @@ function Cart() {
                 <div id="summary" className="box-in-cart-page">
                     <p id="total">Total: &#8377;{total.toFixed(2)}</p>
                     <div id="customer-details">
-                        <p><span>Name:</span> {data.full_name}</p>
-                        <p><span>Contact Number:</span> {data.contact}</p>
-                        <p><span>Email:</span> {data.email}</p>
-                        <p><span>Shipping to:</span> {data.address}</p>
+                        <p><span id="detail">Name:</span> {data.full_name}</p>
+                        <p><span id="detail">Contact Number:</span> {data.contact}</p>
+                        <p><span id="detail">Email:</span> {data.email}</p>
+                        <p><span id="detail">Shipping to:</span> {data.address}</p>
                     </div>
                     <div>
                         <label htmlFor="payment">Payment:</label>

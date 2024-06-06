@@ -1,11 +1,12 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import cart from "../../assets/cart.svg";
 
 
 function Navbar() {
+    const Navigate = useNavigate();
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     let username = params.get('username');
@@ -23,7 +24,7 @@ function Navbar() {
         localStorage.removeItem("user");
         localStorage.removeItem("key");
         localStorage.removeItem("token");
-        window.location.href = "/auth_login";
+        Navigate("/auth_login");
     }
 
 
