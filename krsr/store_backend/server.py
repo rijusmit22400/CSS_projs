@@ -87,6 +87,7 @@ def validate_token():
     name = details['username']
     key = details['key']
     payload = tokens.validate_token(token)
+    print(details)
     if(payload['username'] == name and payload['key'] == key): #type: ignore
         print("Valid Token")
         Response = jsonify({"entry": "valid"})
