@@ -1,6 +1,4 @@
-import re
-from flask import Flask, request, redirect, session, Response
-from h11 import Request
+from flask import Flask, request, redirect
 import db_connect as db
 from api_methods import validate, add_user, add_customer, adding_to_cart
 from flask_cors import CORS
@@ -11,7 +9,7 @@ import password_hashing as ph
 
 secret = tokens.secret_key
 
-
+engine = db.engine
 ses = db.session()
 con = db.conn
 USER = db.User
@@ -19,6 +17,7 @@ CUSTOMER = db.Customer
 PRODUCT = db.Product
 CATEGORY = db.Category
 CART = db.Cart
+INVOICE = db.Invoice
 
 app = Flask(__name__)
 app.secret_key = secret
@@ -51,6 +50,15 @@ def login():
     Response.headers["Authorization"] = auth_token
     Response.headers["Access-Control-Expose-Headers"] = "Authorization"
     return Response
+
+@app.route("/", methods=['GET'])
+def intDB():
+    if not con.dialect.has_table(con, "user"):
+        db.Base.metadata.create_all(con, tables=None, checkfirst=True)
+        ses.commit()
+        return "Database Created"
+    else:
+        return "Database Already Exists"
 
 @app.route('/register', methods=['POST'])
 def register():

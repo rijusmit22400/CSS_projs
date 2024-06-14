@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-engine = create_engine(f'mysql://riju:$whiteknight28@localhost/krsr_store', echo = True)
-
-import mysql
+ssl_args = {'ssl_ca': "DigiCertGlobalRootG2.crt.pem", 'ssl_disabled':'False'}
+ssl_args = {'ssl': {'cert':'./DigiCertGlobalRootG2.crt.pem', 'key':'./DigiCertGlobalRootG2.crt.pem', 'ca':'./DigiCertGlobalRootG2.crt.pem'}}
+engine = create_engine(f'mysql://rijusmit:Mummy&papa2024@rijusmit.com:3306/riju_ecom', echo = True)
 conn = engine.connect()
 session = sessionmaker(bind = conn)
 
