@@ -35,28 +35,29 @@ class Admin(Base):
 class Category(Base):
     __tablename__ = 'category'
     id = Column(Integer, primary_key=True)
-    description = Column(Integer, unique=True)
+    description = Column(String(255), unique=True)
     
 class Product(Base):
     __tablename__ = 'product'
     id = Column(Integer, primary_key=True)
-    category_id = Column(Integer, unique=True)
+    category_id = Column(Integer)
     name = Column(String(255))
-    description = Column(String(255))
     price = Column(Double)
     quantity = Column(Integer)
+    description = Column(String(1020))
     
 class Cart(Base):
     __tablename__ = 'cart'
     id = Column(Integer, primary_key=True)
-    customer_id = Column(Integer, unique=True)
+    customer_id = Column(Integer)
     product_id = Column(Integer)
     quantity = Column(Integer)
 
 class Invoice(Base):
     __tablename__ = 'invoice'
     id = Column(Integer, primary_key=True)
-    customer_id = Column(Integer, unique=True)
+    customer_id = Column(Integer)
     admin_id = Column(Integer)
     revenue = Column(Double)
     date = Column(String(255))
+    

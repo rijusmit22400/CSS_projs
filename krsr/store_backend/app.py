@@ -1,3 +1,4 @@
+from unicodedata import category
 from flask import Flask, request, redirect
 import db_connect as db
 from api_methods import validate, add_user, add_customer, adding_to_cart
@@ -53,8 +54,8 @@ def login():
 
 @app.route("/", methods=['GET'])
 def intDB():
-    if not con.dialect.has_table(con, "user"):
-        db.Base.metadata.create_all(con, tables=None, checkfirst=True)
+    if not con.dialect.has_table(con, "user") and  not con.dialect.has_table(con, "admin") and not con.dialect.has_table(con, "customer") and not con.dialect.has_table(con, "category") and not con.dialect.has_table(con, "product") and not con.dialect.has_table(con, "cart") and not con.dialect.has_table(con, "invoice"):
+        db.Base.metadata.create_all(con, checkfirst=True)
         ses.commit()
         return "Database Created"
     else:
@@ -81,11 +82,13 @@ def register():
 
 @app.route('/call/product/<id>', methods=['GET'])
 def product(id):
+    ses.rollback()
     products = ses.query(PRODUCT).filter(PRODUCT.category_id == id).all()
-    print("Request Accpeted ,Product")
     category = ses.query(CATEGORY).filter(CATEGORY.id == id).first()
+    print(category)
+    print("Request Accpeted ,Product")
     output = { "name": category.description, "items":[{"p_id": products[i].id,"item":products[i].name, "description":products[i].description, "price":products[i].price, "stock":products[i].quantity} for i in range(len(products))]} # type: ignore
-    return output
+    return jsonify(output)
 
 @app.route('/validate_token', methods=['POST'])
 def validate_token():
